@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Tasks from './pages/Tasks'
 import Finance from './pages/Finance'
@@ -8,7 +8,7 @@ import FuturePlans from './pages/FuturePlans'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/tasks" replace />} />
@@ -19,7 +19,7 @@ function App() {
           <Route path="plans" element={<FuturePlans />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
