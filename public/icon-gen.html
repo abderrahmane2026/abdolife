@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Icon Generator</title></head>
+<body>
+<script>
+function makeIcon(size) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  // Background
+  ctx.fillStyle = '#0a0a12';
+  ctx.roundRect(0, 0, size, size, size * 0.22);
+  ctx.fill();
+  // Accent circle
+  ctx.fillStyle = '#C8F135';
+  const pad = size * 0.2;
+  ctx.beginPath();
+  ctx.roundRect(pad, pad, size - pad*2, size - pad*2, size * 0.12);
+  ctx.fill();
+  // Letter A
+  ctx.fillStyle = '#07070f';
+  ctx.font = `bold ${size * 0.45}px system-ui`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('A', size/2, size/2);
+  return canvas.toDataURL('image/png');
+}
+
+[192, 512].forEach(size => {
+  const img = document.createElement('img');
+  img.src = makeIcon(size);
+  img.style.margin = '8px';
+  document.body.appendChild(img);
+  const a = document.createElement('a');
+  a.href = img.src;
+  a.download = `icon-${size}.png`;
+  a.textContent = `Download icon-${size}.png`;
+  a.style.display = 'block';
+  document.body.appendChild(a);
+});
+</script>
+</body>
+</html>
