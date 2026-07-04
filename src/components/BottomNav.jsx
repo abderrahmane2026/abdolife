@@ -21,7 +21,7 @@ export default function BottomNav() {
             `bottom-nav-link${isActive ? ' active' : ''}`
           }
         >
-          <Icon size={20} />
+          <Icon size={20} color="currentColor" />
           <span>{label}</span>
         </NavLink>
       ))}
