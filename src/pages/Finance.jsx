@@ -29,7 +29,7 @@ function TransactionModal({ onClose, onSave }) {
       <div className="modal fade-in">
         <div className="modal-header">
           <span className="modal-title">Add Transaction</span>
-          <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}><X size={16} /></button>
+          <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}><X size={16} color="#FFFFFF" /></button>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -37,11 +37,11 @@ function TransactionModal({ onClose, onSave }) {
             <div className="type-toggle">
               <button type="button" className={`type-btn${form.type === 'expense' ? ' active expense' : ''}`}
                 onClick={() => handleTypeChange('expense')}>
-                <TrendingDown size={14} /> Expense
+                <TrendingDown size={14} color={form.type === 'expense' ? '#ff4d6d' : '#6B7280'} /> Expense
               </button>
               <button type="button" className={`type-btn${form.type === 'income' ? ' active income' : ''}`}
                 onClick={() => handleTypeChange('income')}>
-                <TrendingUp size={14} /> Income
+                <TrendingUp size={14} color={form.type === 'income' ? '#4dffb4' : '#6B7280'} /> Income
               </button>
             </div>
           </div>
@@ -69,7 +69,7 @@ function TransactionModal({ onClose, onSave }) {
           </div>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', marginTop: '8px' }}>
             <button type="button" className="btn btn-ghost" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn btn-accent"><Plus size={14} /> Add</button>
+            <button type="submit" className="btn btn-accent"><Plus size={14} color="#07070f" /> Add</button>
           </div>
         </form>
       </div>
@@ -115,18 +115,18 @@ export default function Finance() {
 
       <div className="section-header">
         <h1 className="section-title">
-          <DollarSign size={24} className="section-title-icon" />
+          <DollarSign size={24} className="section-title-icon" color="#C8F135" />
           Finance
         </h1>
         <button className="btn btn-accent" onClick={() => setShowModal(true)}>
-          <Plus size={16} /> Add Transaction
+          <Plus size={16} color="#07070f" /> Add Transaction
         </button>
       </div>
 
       {/* Balance cards */}
       <div className="finance-summary">
         <div className="balance-card" style={{ borderColor: balance >= 0 ? 'var(--success)' : 'var(--danger)' }}>
-          <Wallet size={20} style={{ color: balance >= 0 ? 'var(--success)' : 'var(--danger)' }} />
+          <Wallet size={20} color={balance >= 0 ? '#4dffb4' : '#ff4d6d'} />
           <div>
             <div className="balance-amount" style={{ color: balance >= 0 ? 'var(--success)' : 'var(--danger)' }}>
               {fmt(balance)}
@@ -135,12 +135,12 @@ export default function Finance() {
           </div>
         </div>
         <div className="stat-card">
-          <TrendingUp size={16} style={{ color: 'var(--success)' }} />
+          <TrendingUp size={16} color="#4dffb4" />
           <span className="stat-value" style={{ color: 'var(--success)' }}>{fmt(totalIncome)}</span>
           <span className="stat-label">Income</span>
         </div>
         <div className="stat-card">
-          <TrendingDown size={16} style={{ color: 'var(--danger)' }} />
+          <TrendingDown size={16} color="#ff4d6d" />
           <span className="stat-value" style={{ color: 'var(--danger)' }}>{fmt(totalExpense)}</span>
           <span className="stat-label">Expenses</span>
         </div>
@@ -186,7 +186,7 @@ export default function Finance() {
       <div className="transaction-list">
         {filtered.length === 0 ? (
           <div className="empty-state">
-            <DollarSign size={48} />
+            <DollarSign size={48} color="#6B7280" />
             <p>{transactions.length === 0 ? 'No transactions yet. Add your first one!' : 'No transactions match your filter.'}</p>
           </div>
         ) : (
@@ -195,7 +195,7 @@ export default function Finance() {
             .map(tx => (
               <div key={tx.id} className="tx-item card">
                 <div className={`tx-icon ${tx.type}`}>
-                  {tx.type === 'income' ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
+                  {tx.type === 'income' ? <TrendingUp size={16} color="#4dffb4" /> : <TrendingDown size={16} color="#ff4d6d" />}
                 </div>
                 <div className="tx-content">
                   <div className="tx-desc">{tx.description}</div>
@@ -208,7 +208,7 @@ export default function Finance() {
                   {tx.type === 'income' ? '+' : '-'}{fmt(tx.amount)}
                 </div>
                 <button className="btn btn-danger task-delete" onClick={() => remove(tx.id)}>
-                  <Trash2 size={14} />
+                  <Trash2 size={14} color="#ff4d6d" />
                 </button>
               </div>
             ))

@@ -74,11 +74,11 @@ export default function Notes() {
     <div className="notes-page fade-in">
       <div className="section-header">
         <h1 className="section-title">
-          <FileText size={24} className="section-title-icon" />
+          <FileText size={24} className="section-title-icon" color="#C8F135" />
           Notes
         </h1>
         <button className="btn btn-accent" onClick={createNote}>
-          <Plus size={16} /> New Note
+          <Plus size={16} color="#07070f" /> New Note
         </button>
       </div>
 
@@ -86,11 +86,11 @@ export default function Notes() {
         {/* Sidebar list */}
         <div className="notes-sidebar">
           <div className="notes-search">
-            <Search size={14} style={{ color: 'var(--text-muted)' }} />
+            <Search size={14} color="#6B7280" />
             <input className="notes-search-input" placeholder="Search notes..." value={search}
               onChange={e => setSearch(e.target.value)} />
-            {search && <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex' }}
-              onClick={() => setSearch('')}><X size={12} /></button>}
+            {search && <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex' }}
+              onClick={() => setSearch('')}><X size={12} color="#6B7280" /></button>}
           </div>
 
           {allTags.length > 0 && (
@@ -107,7 +107,7 @@ export default function Notes() {
           <div className="notes-list">
             {filtered.length === 0 ? (
               <div className="empty-state" style={{ padding: '40px 20px' }}>
-                <FileText size={36} />
+                <FileText size={36} color="#6B7280" />
                 <p style={{ fontSize: '13px' }}>{notes.length === 0 ? 'No notes yet' : 'No matches'}</p>
               </div>
             ) : (
@@ -122,7 +122,7 @@ export default function Notes() {
                     {note.content.slice(0, 80) || <span style={{ color: 'var(--text-dim)' }}>Empty note</span>}
                   </div>
                   <div className="note-preview-meta">
-                    <Clock size={10} />
+                    <Clock size={10} color="#6B7280" />
                     <span>{timeAgo(note.updatedAt)}</span>
                     {note.tags.length > 0 && <span className="note-preview-tags">· {note.tags.map(t => `#${t}`).join(' ')}</span>}
                   </div>
@@ -136,9 +136,9 @@ export default function Notes() {
         <div className="notes-editor">
           {!activeNote ? (
             <div className="empty-state" style={{ height: '100%' }}>
-              <FileText size={64} />
+              <FileText size={64} color="#6B7280" />
               <p>Select a note or create a new one</p>
-              <button className="btn btn-accent" onClick={createNote}><Plus size={14} /> New Note</button>
+              <button className="btn btn-accent" onClick={createNote}><Plus size={14} color="#07070f" /> New Note</button>
             </div>
           ) : (
             <div className="note-editor-inner">
@@ -150,7 +150,7 @@ export default function Notes() {
                   ))}
                 </div>
                 <button className="btn btn-danger" style={{ padding: '6px 10px' }} onClick={() => deleteNote(activeNote.id)}>
-                  <Trash2 size={14} /> Delete
+                  <Trash2 size={14} color="#ff4d6d" /> Delete
                 </button>
               </div>
 
@@ -163,7 +163,7 @@ export default function Notes() {
                 onChange={e => updateNote(activeNote.id, { content: e.target.value })} />
 
               <div className="note-tags-area">
-                <Tag size={12} style={{ color: 'var(--text-muted)' }} />
+                <Tag size={12} color="#6B7280" />
                 <div className="note-tags">
                   {activeNote.tags.map(tag => (
                     <span key={tag} className="note-tag">

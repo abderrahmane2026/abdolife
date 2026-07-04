@@ -10,6 +10,7 @@ export default defineConfig({
       injectRegister: false,
       manifest: false,
       workbox: {
+        cacheId: 'abdo-life-v3',
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
         cleanupOutdatedCaches: true,
       },

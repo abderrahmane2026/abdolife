@@ -25,7 +25,7 @@ function ProjectModal({ onClose, onSave, initial }) {
       <div className="modal fade-in">
         <div className="modal-header">
           <span className="modal-title">{initial ? 'Edit Project' : 'New Project'}</span>
-          <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}><X size={16} /></button>
+          <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}><X size={16} color="#FFFFFF" /></button>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -61,7 +61,7 @@ function ProjectModal({ onClose, onSave, initial }) {
           </div>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', marginTop: '8px' }}>
             <button type="button" className="btn btn-ghost" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn btn-accent"><Plus size={14} /> {initial ? 'Update' : 'Create'}</button>
+            <button type="submit" className="btn btn-accent"><Plus size={14} color="#07070f" /> {initial ? 'Update' : 'Create'}</button>
           </div>
         </form>
       </div>
@@ -124,11 +124,11 @@ export default function Projects() {
 
       <div className="section-header">
         <h1 className="section-title">
-          <FolderKanban size={24} className="section-title-icon" />
+          <FolderKanban size={24} className="section-title-icon" color="#C8F135" />
           Projects
         </h1>
         <button className="btn btn-accent" onClick={() => setShowModal(true)}>
-          <Plus size={16} /> New Project
+          <Plus size={16} color="#07070f" /> New Project
         </button>
       </div>
 
@@ -149,7 +149,7 @@ export default function Projects() {
 
       {projects.length === 0 ? (
         <div className="empty-state">
-          <FolderKanban size={48} />
+          <FolderKanban size={48} color="#6B7280" />
           <p>No projects yet. Create your first project!</p>
         </div>
       ) : (
@@ -164,8 +164,8 @@ export default function Projects() {
               <div key={project.id} className="project-card card">
                 <div className="project-top-bar" style={{ background: project.color }} />
                 <div className="project-header" onClick={() => setExpanded(isOpen ? null : project.id)}>
-                  <div className="project-icon" style={{ background: project.color + '22', color: project.color }}>
-                    <FolderKanban size={18} />
+                  <div className="project-icon" style={{ background: project.color + '22' }}>
+                    <FolderKanban size={18} color={project.color} />
                   </div>
                   <div className="project-info">
                     <div className="project-name">{project.name}</div>
@@ -184,10 +184,10 @@ export default function Projects() {
                   <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                     <button className="btn btn-danger" style={{ padding: '6px' }}
                       onClick={e => { e.stopPropagation(); removeProject(project.id) }}>
-                      <Trash2 size={14} />
+                      <Trash2 size={14} color="#ff4d6d" />
                     </button>
                     <button className="btn btn-ghost" style={{ padding: '6px' }}>
-                      {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                      {isOpen ? <ChevronUp size={16} color="#FFFFFF" /> : <ChevronDown size={16} color="#FFFFFF" />}
                     </button>
                   </div>
                 </div>
@@ -200,12 +200,12 @@ export default function Projects() {
                         <div key={task.id} className={`project-task${task.done ? ' done' : ''}`}>
                           <button className={`checkbox${task.done ? ' checked' : ''}`}
                             onClick={() => toggleTask(project.id, task.id)}>
-                            {task.done && <CheckCircle2 size={10} />}
+                            {task.done && <CheckCircle2 size={10} color="#07070f" />}
                           </button>
                           <span className="project-task-text">{task.text}</span>
                           <button className="btn btn-danger" style={{ padding: '4px', opacity: 0.7 }}
                             onClick={() => removeTask(project.id, task.id)}>
-                            <Trash2 size={12} />
+                            <Trash2 size={12} color="#ff4d6d" />
                           </button>
                         </div>
                       ))}
@@ -215,7 +215,7 @@ export default function Projects() {
                         onChange={e => setNewTask(n => ({ ...n, [project.id]: e.target.value }))}
                         onKeyDown={e => e.key === 'Enter' && addTask(project.id)} />
                       <button className="btn btn-accent" onClick={() => addTask(project.id)}>
-                        <Plus size={14} />
+                        <Plus size={14} color="#07070f" />
                       </button>
                     </div>
                     <div style={{ marginTop: '12px' }}>

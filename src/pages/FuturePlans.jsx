@@ -37,7 +37,7 @@ function PlanModal({ onClose, onSave }) {
       <div className="modal fade-in">
         <div className="modal-header">
           <span className="modal-title">Add Future Plan</span>
-          <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}><X size={16} /></button>
+          <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}><X size={16} color="#FFFFFF" /></button>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -72,7 +72,7 @@ function PlanModal({ onClose, onSave }) {
           </div>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', marginTop: '8px' }}>
             <button type="button" className="btn btn-ghost" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn btn-accent"><Star size={14} /> Add Plan</button>
+            <button type="submit" className="btn btn-accent"><Star size={14} color="#07070f" /> Add Plan</button>
           </div>
         </form>
       </div>
@@ -119,11 +119,11 @@ export default function FuturePlans() {
 
       <div className="section-header">
         <h1 className="section-title">
-          <Star size={24} className="section-title-icon" />
+          <Star size={24} className="section-title-icon" color="#C8F135" />
           Future Plans
         </h1>
         <button className="btn btn-accent" onClick={() => setShowModal(true)}>
-          <Plus size={16} /> Add Plan
+          <Plus size={16} color="#07070f" /> Add Plan
         </button>
       </div>
 
@@ -157,7 +157,7 @@ export default function FuturePlans() {
               <button key={c.id} className={`filter-btn cat-btn${filterCat === c.id ? ' active' : ''}`}
                 style={filterCat === c.id ? { borderColor: c.color, color: c.color, background: c.color + '20' } : {}}
                 onClick={() => setFilterCat(v => v === c.id ? 'all' : c.id)}>
-                <Icon size={12} /> {c.label}
+                <Icon size={12} color={filterCat === c.id ? c.color : '#6B7280'} /> {c.label}
               </button>
             )
           })}
@@ -173,9 +173,9 @@ export default function FuturePlans() {
 
       {plans.length === 0 ? (
         <div className="empty-state" style={{ paddingTop: '80px' }}>
-          <Star size={64} />
+          <Star size={64} color="#6B7280" />
           <p>No plans yet. Start dreaming big!</p>
-          <button className="btn btn-accent" onClick={() => setShowModal(true)}><Plus size={14} /> Add Your First Dream</button>
+          <button className="btn btn-accent" onClick={() => setShowModal(true)}><Plus size={14} color="#07070f" /> Add Your First Dream</button>
         </div>
       ) : (
         <>
@@ -224,17 +224,17 @@ function PlanCard({ plan, onToggle, onDelete }) {
   return (
     <div className={`plan-card card${plan.achieved ? ' achieved' : ''}`}>
       <div className="plan-card-top">
-        <div className="plan-cat-icon" style={{ background: cat.color + '20', color: cat.color }}>
-          <Icon size={16} />
+        <div className="plan-cat-icon" style={{ background: cat.color + '20' }}>
+          <Icon size={16} color={cat.color} />
         </div>
         <div className="plan-actions">
           <button className={`btn${plan.achieved ? ' btn-ghost' : ' btn-ghost'} achieve-btn`}
-            style={plan.achieved ? { color: 'var(--success)', borderColor: 'rgba(77,255,180,0.4)' } : {}}
+            style={plan.achieved ? { borderColor: 'rgba(77,255,180,0.4)' } : {}}
             onClick={() => onToggle(plan.id)} title={plan.achieved ? 'Mark as not yet achieved' : 'Mark as achieved'}>
-            <Star size={12} fill={plan.achieved ? 'currentColor' : 'none'} />
+            <Star size={12} color={plan.achieved ? '#4dffb4' : '#FFFFFF'} fill={plan.achieved ? '#4dffb4' : 'none'} />
           </button>
           <button className="btn btn-danger" style={{ padding: '5px' }} onClick={() => onDelete(plan.id)}>
-            <Trash2 size={12} />
+            <Trash2 size={12} color="#ff4d6d" />
           </button>
         </div>
       </div>

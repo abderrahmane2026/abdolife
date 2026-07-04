@@ -15,7 +15,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <div className="logo-icon">
-          <Zap size={20} fill="currentColor" />
+          <Zap size={20} color="#07070f" fill="#07070f" />
         </div>
         <div className="logo-text">
           <span className="logo-name">AbdoLife</span>
@@ -32,9 +32,13 @@ export default function Sidebar() {
               `sidebar-link${isActive ? ' active' : ''}`
             }
           >
-            <Icon size={18} />
-            <span>{label}</span>
-            <div className="link-indicator" />
+            {({ isActive }) => (
+              <>
+                <Icon size={18} color={isActive ? '#C8F135' : '#6B7280'} />
+                <span>{label}</span>
+                <div className="link-indicator" />
+              </>
+            )}
           </NavLink>
         ))}
       </nav>

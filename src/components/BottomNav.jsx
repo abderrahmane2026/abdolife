@@ -23,13 +23,7 @@ export default function BottomNav() {
         >
           {({ isActive }) => (
             <>
-              {/* TEST: hardcoded hex instead of currentColor/CSS var — diagnosing standalone-mode
-                  stroke inheritance failure (var() -> currentColor -> SVG stroke) */}
-              <Icon size={20} color={isActive ? '#C8F135' : '#4a4a6a'} strokeWidth={2} />
-              {/* TEMP DEBUG: visual probe to isolate lucide vs. SVG-in-general vs. container rendering */}
-              <span style={{ color: 'red', fontSize: 8 }}>NAV</span>
-              {/* TEMP DEBUG: visual probe */}
-              <svg width="24" height="24"><circle cx="12" cy="12" r="10" fill="red" /></svg>
+              <Icon size={24} color={isActive ? '#C8F135' : '#6B7280'} strokeWidth={2} />
               <span>{label}</span>
             </>
           )}

@@ -26,7 +26,7 @@ function TaskModal({ onClose, onSave, initial }) {
         <div className="modal-header">
           <span className="modal-title">{initial ? 'Edit Task' : 'New Task'}</span>
           <button className="btn btn-ghost" style={{ padding: '6px' }} onClick={onClose}>
-            <X size={16} />
+            <X size={16} color="#FFFFFF" />
           </button>
         </div>
         <form onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ function TaskModal({ onClose, onSave, initial }) {
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end', marginTop: '8px' }}>
             <button type="button" className="btn btn-ghost" onClick={onClose}>Cancel</button>
             <button type="submit" className="btn btn-accent">
-              <Plus size={14} /> {initial ? 'Update' : 'Add Task'}
+              <Plus size={14} color="#07070f" /> {initial ? 'Update' : 'Add Task'}
             </button>
           </div>
         </form>
@@ -106,11 +106,11 @@ export default function Tasks() {
 
       <div className="section-header">
         <h1 className="section-title">
-          <CheckSquare size={24} className="section-title-icon" />
+          <CheckSquare size={24} className="section-title-icon" color="#C8F135" />
           Tasks
         </h1>
         <button className="btn btn-accent" onClick={() => setShowModal(true)}>
-          <Plus size={16} /> New Task
+          <Plus size={16} color="#07070f" /> New Task
         </button>
       </div>
 
@@ -145,7 +145,7 @@ export default function Tasks() {
       {/* Filters */}
       <div className="tasks-filters">
         <div className="filter-group">
-          <Filter size={14} style={{ color: 'var(--text-muted)' }} />
+          <Filter size={14} color="#6B7280" />
           {['all', 'pending', 'done'].map(f => (
             <button key={f} className={`filter-btn${filter === f ? ' active' : ''}`} onClick={() => setFilter(f)}>
               {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -165,7 +165,7 @@ export default function Tasks() {
       <div className="task-list">
         {filtered.length === 0 ? (
           <div className="empty-state">
-            <CheckSquare size={48} />
+            <CheckSquare size={48} color="#6B7280" />
             <p>{tasks.length === 0 ? 'No tasks yet. Add your first task!' : 'No tasks match your filter.'}</p>
           </div>
         ) : (
@@ -214,7 +214,7 @@ function TaskItem({ task, onToggle, onDelete }) {
         </div>
       </div>
       <button className="btn btn-danger task-delete" onClick={() => onDelete(task.id)}>
-        <Trash2 size={14} />
+        <Trash2 size={14} color="#ff4d6d" />
       </button>
     </div>
   )
