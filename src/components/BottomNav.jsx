@@ -22,6 +22,10 @@ export default function BottomNav() {
           }
         >
           <Icon size={20} color="currentColor" />
+          {/* TEMP DEBUG: visual probe to isolate lucide vs. SVG-in-general vs. container rendering */}
+          <span style={{ color: 'red', fontSize: 8 }}>NAV</span>
+          {/* TEMP DEBUG: visual probe */}
+          <svg width="24" height="24"><circle cx="12" cy="12" r="10" fill="red" /></svg>
           <span>{label}</span>
         </NavLink>
       ))}
