@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abdo-life-v1';
+const CACHE_NAME = 'abdo-life-v2';
 const ASSETS = [
   '/',
   '/index.html',
